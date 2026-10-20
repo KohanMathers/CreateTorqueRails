@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.kmathers.createtorquerails.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AbstractContraptionEntityMixin",
+    "CarriageContraptionEntityMixin",
+    "ContraptionAccessor",
+    "ContraptionMixin",
+    "TrainMixin"
+  ],
+  "client": [
+    "ClientContraptionAccessor",
+    "ContraptionVisualMixin",
+    "GoggleOverlayRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " P ",
+    "SRS"
+  ],
+  "key": {
+    "P": { "item": "create:precision_mechanism" },
+    "R": { "item": "create:railway_casing" },
+    "S": { "item": "create:shaft" }
+  },
+  "result": {
+    "item": "createtorquerails:train_engine"
+  }
+}

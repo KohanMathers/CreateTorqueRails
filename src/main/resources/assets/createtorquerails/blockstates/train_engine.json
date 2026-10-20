@@ -1,0 +1,98 @@
+{
+  "variants": {
+    "base=south,facing=north": {
+      "model": "createtorquerails:block/train_engine"
+    },
+    "base=west,facing=north": {
+      "model": "createtorquerails:block/train_engine"
+    },
+    "base=north,facing=north": {
+      "model": "createtorquerails:block/train_engine"
+    },
+    "base=east,facing=north": {
+      "model": "createtorquerails:block/train_engine"
+    },
+    "base=south,facing=south": {
+      "model": "createtorquerails:block/train_engine"
+    },
+    "base=west,facing=south": {
+      "model": "createtorquerails:block/train_engine"
+    },
+    "base=north,facing=south": {
+      "model": "createtorquerails:block/train_engine"
+    },
+    "base=east,facing=south": {
+      "model": "createtorquerails:block/train_engine"
+    },
+    "base=south,facing=east": {
+      "model": "createtorquerails:block/train_engine",
+      "y": 90
+    },
+    "base=west,facing=east": {
+      "model": "createtorquerails:block/train_engine",
+      "y": 90
+    },
+    "base=north,facing=east": {
+      "model": "createtorquerails:block/train_engine",
+      "y": 90
+    },
+    "base=east,facing=east": {
+      "model": "createtorquerails:block/train_engine",
+      "y": 90
+    },
+    "base=south,facing=west": {
+      "model": "createtorquerails:block/train_engine",
+      "y": 90
+    },
+    "base=west,facing=west": {
+      "model": "createtorquerails:block/train_engine",
+      "y": 90
+    },
+    "base=north,facing=west": {
+      "model": "createtorquerails:block/train_engine",
+      "y": 90
+    },
+    "base=east,facing=west": {
+      "model": "createtorquerails:block/train_engine",
+      "y": 90
+    },
+    "base=south,facing=up": {
+      "model": "createtorquerails:block/train_engine",
+      "x": 90
+    },
+    "base=west,facing=up": {
+      "model": "createtorquerails:block/train_engine",
+      "x": 90,
+      "y": 90
+    },
+    "base=north,facing=up": {
+      "model": "createtorquerails:block/train_engine",
+      "x": 90,
+      "y": 180
+    },
+    "base=east,facing=up": {
+      "model": "createtorquerails:block/train_engine",
+      "x": 90,
+      "y": 270
+    },
+    "base=south,facing=down": {
+      "model": "createtorquerails:block/train_engine",
+      "x": 90
+    },
+    "base=west,facing=down": {
+      "model": "createtorquerails:block/train_engine",
+      "x": 90,
+      "y": 90
+    },
+    "base=north,facing=down": {
+      "model": "createtorquerails:block/train_engine",
+      "x": 90,
+      "y": 180
+    },
+    "base=east,facing=down": {
+      "model": "createtorquerails:block/train_engine",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
