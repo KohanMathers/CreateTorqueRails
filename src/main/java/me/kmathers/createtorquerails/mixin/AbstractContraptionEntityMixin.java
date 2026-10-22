@@ -7,6 +7,7 @@ import me.kmathers.createtorquerails.simulation.ActorStates;
 import me.kmathers.createtorquerails.simulation.ContraptionSimulationManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,6 +29,12 @@ public abstract class AbstractContraptionEntityMixin {
 
         if (self.level().isClientSide) cir.setReturnValue(true);
         else cir.setReturnValue(ContraptionSimulationManager.useBlock(self, player, localPos, side, hand));
+    }
+
+    @Inject(method = "writeAdditional", at = @At("HEAD"))
+    private void createtorquerails$saveSimulation(CompoundTag compound, boolean spawnPacket, CallbackInfo ci) {
+        AbstractContraptionEntity self = (AbstractContraptionEntity) (Object) this;
+        if (!spawnPacket && !self.level().isClientSide) ContraptionSimulationManager.save(self);
     }
 
     @Inject(method = "handleBlockChange", at = @At("TAIL"))

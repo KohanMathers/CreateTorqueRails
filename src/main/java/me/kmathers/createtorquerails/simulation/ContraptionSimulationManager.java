@@ -49,6 +49,11 @@ public final class ContraptionSimulationManager {
         return simulation != null && simulation.useBlock(player, localPos, side, hand);
     }
 
+    public static void save(AbstractContraptionEntity entity) {
+        ContraptionSimulation simulation = SIMULATIONS.get(entity);
+        if (simulation != null && simulation.contraption() == entity.getContraption()) simulation.saveAll();
+    }
+
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;

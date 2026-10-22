@@ -23,6 +23,7 @@ import com.simibubi.create.content.fluids.tank.BoilerData;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import com.simibubi.create.content.kinetics.base.BlockBreakingMovementBehaviour;
+import com.simibubi.create.content.kinetics.base.GeneratingKineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.deployer.DeployerMovementBehaviour;
 import com.simibubi.create.content.kinetics.steamEngine.PoweredShaftBlock;
@@ -180,6 +181,7 @@ public class ContraptionSimulation {
                 kbe.clearKineticInformation();
                 kbe.updateSpeed = true;
             }
+            if (be instanceof GeneratingKineticBlockEntity generator) generator.reActivateSource = true;
             return be;
         } catch (Exception e) {
             LOGGER.error("Contraption sim [{}] couldn't create block entity for {} at {}, leaving it out", label, state, info.pos(), e);
@@ -369,17 +371,10 @@ public class ContraptionSimulation {
 
         for (BlockPos pos : changed) {
             BlockEntity be = level.blockEntities.get(pos);
-            StructureBlockInfo info = contraption.getBlocks().get(pos);
-            if (be == null || info == null) continue;
-            CompoundTag nbt = be.saveWithFullMetadata();
-            nbt.remove("x");
-            nbt.remove("y");
-            nbt.remove("z");
-            contraption.getBlocks().put(pos, new StructureBlockInfo(pos, info.state(), nbt));
+            if (be == null || !writeBack(pos, be)) continue;
             CompoundTag updateTag = be.getUpdateTag();
             updateTags.put(pos, updateTag);
             updates.put(pos, updateTag);
-            writeBacks++;
         }
         changed.clear();
 
@@ -389,6 +384,25 @@ public class ContraptionSimulation {
             if (fullKinetics || !state.equals(previous)) updates.computeIfAbsent(be.getBlockPos(), $ -> be.getUpdateTag());
         }
         return updates;
+    }
+
+    public void saveAll() {
+        for (StorageBridge<?> bridge : storageBridges) if (bridge.push(level)) storagePushes++;
+        level.blockEntities.forEach(this::writeBack);
+        changed.clear();
+        LOGGER.debug("Contraption sim [{}] saved {} block entities into the contraption", label, level.blockEntities.size());
+    }
+
+    private boolean writeBack(BlockPos pos, BlockEntity be) {
+        StructureBlockInfo info = contraption.getBlocks().get(pos);
+        if (info == null) return false;
+        CompoundTag nbt = be.saveWithFullMetadata();
+        nbt.remove("x");
+        nbt.remove("y");
+        nbt.remove("z");
+        contraption.getBlocks().put(pos, new StructureBlockInfo(pos, info.state(), nbt));
+        writeBacks++;
+        return true;
     }
 
     private void dumpState() {
