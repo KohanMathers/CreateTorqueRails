@@ -33,6 +33,7 @@ public class CreateTorqueRails
         TorqueRailsNetwork.register();
 
         MinecraftForge.EVENT_BUS.register(ContraptionSimulationManager.class);
+        MinecraftForge.EVENT_BUS.register(TorqueRailsCommands.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

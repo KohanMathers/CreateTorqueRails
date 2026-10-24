@@ -4,6 +4,8 @@ import com.railwayteam.railways.mixin_interfaces.IHandcarTrain;
 import com.simibubi.create.content.trains.entity.Train;
 import com.simibubi.create.content.trains.graph.DimensionPalette;
 import com.simibubi.create.content.trains.graph.TrackGraph;
+
+import me.kmathers.createtorquerails.TorqueRailsCommon;
 import me.kmathers.createtorquerails.engine.TrainPower;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.fml.util.thread.EffectiveSide;
@@ -31,6 +33,7 @@ public abstract class TrainMixin {
     }
 
     private boolean needsEngine() {
+        if (TorqueRailsCommon.getBypassEngine()) return false;
         return EffectiveSide.get().isServer() && !(this instanceof IHandcarTrain handcar && handcar.railways$isHandcar());
     }
 

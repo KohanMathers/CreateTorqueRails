@@ -21,5 +21,7 @@
   "createtorquerails.ponder.train_engine.text_4": "At 256 RPM, it reaches its full top speed",
   "createtorquerails.ponder.train_engine.text_5": "Every carriage adds stress it has to carry: 16 SU per RPM, shared evenly between all of the train's engines",
   "createtorquerails.ponder.train_engine.text_6": "If an engine overstresses, it stops pulling",
-  "createtorquerails.ponder.train_engine.text_7": "With Engineer's Goggles, the engine shows the train's max speed, and how fast its stress capacity could take it"
+  "createtorquerails.ponder.train_engine.text_7": "With Engineer's Goggles, the engine shows the train's max speed, and how fast its stress capacity could take it",
+  "createtorquerails.command.toggle.on": "Enabled engine requirement for all trains.",
+  "createtorquerails.command.toggle.off": "Disabled engine requirement for all trains. NOTE: This will be re-enabled on server / world restart."
 }

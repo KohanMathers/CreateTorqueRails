@@ -52,6 +52,14 @@ src/main/java/me/kmathers/createtorquerails/
 
 Config options (`TorqueRailsConfig`): `stressPerCarriage` (SU per RPM per carriage) and `fullSpeedRPM` (engine RPM for full top speed).
 
+## Commands
+
+| Command                                           | Permission                 | Description                                                                                                                                                                                                                                                     |
+| ------------------------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/createtorquerails toggle` (alias `/ctr toggle`) | `createtorquerails.toggle` | Toggles the engine requirement for all trains. While it's off, every train runs at full speed whether or not it has a powered engine, which is handy for rescuing a train that can't move. It isn't saved, so it switches back on after a server/world restart. |
+
+By default the permission is granted to ops (permission level 2) and the server console. It's registered with Forge's permission API, so a permissions mod such as LuckPerms can grant it to other players. Commands are registered in `TorqueRailsCommands`.
+
 ## Mixins
 
 Mixins target SRG names, not MCP/intermediary names, since Forge remaps at runtime using official mappings but mixins are applied pre-remap. When adding or editing a mixin, grab the SRG name from the relevant mapped class via the IDE's "show MCP/SRG name" tooling, or check an existing mixin in `mixin/` targeting the same class for the pattern.
